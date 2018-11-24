@@ -7,6 +7,7 @@ class App extends Component {
     super(props)
 
     this.state = {
+      correctLetters: ['_', '_', '_', '_', '_', '_', '_'],
       generatedWord: '',
       word: '_ _ _ _ _ _ _',
       keyboard: [
@@ -31,7 +32,15 @@ class App extends Component {
     console.log(`"${randomWord}" is the word of the game`)
   }
 
-  letterClick = () => {}
+  letterClick = event => {
+    let wordAsAnArray = this.state.generatedWord.split('')
+    wordAsAnArray.map(letter => {
+      if (event.target.value === letter) {
+        this.state.correctLetters.splice(this.state.generatedWord.indexOf(letter), 1, letter)
+      }
+    })
+    console.log(this.state.correctLetters)
+  }
 
   render() {
     return (
@@ -40,7 +49,7 @@ class App extends Component {
         <div>
           <img className="snowman-image" src="./snowman_images/step_7.png" alt="Snowman" />
 
-          <p className="word">{this.state.word}</p>
+          <p className="word">{this.state.correctLetters}</p>
           <section className="keyboard">
             <div className="first-row">
               <button value="q" onClick={this.letterClick}>
