@@ -33,24 +33,52 @@ class App extends Component {
   }
 
   letterClick = event => {
+    event.target.classList.add('hidden')
     let wordAsAnArray = this.state.generatedWord.split('')
     wordAsAnArray.map(letter => {
       if (event.target.value === letter) {
+        this.setSnowmanImage()
         this.state.correctLetters.splice(this.state.generatedWord.indexOf(letter), 1, letter)
       }
     })
     console.log(this.state.correctLetters)
     this.setState({
-      correctedLetters: this.state.correctedLetters
+      correctLetters: this.state.correctLetters
     })
+  }
+
+  setSnowmanImage = () => {
+    this.setState({
+      snowmanStep: this.state.snowmanStep + 1
+    })
+  }
+
+  gameCompleteHeader = () => {
+    let completedWord = this.state.correctLetters
+    if (this.state.generatedWord === completedWord.join('')) {
+      return <p className="game-complete-header">Hey, you did it!</p>
+    }
+  }
+
+  newGameButton = () => {
+    let completedWord = this.state.correctLetters
+    if (this.state.generatedWord === completedWord.join('')) {
+      return <button className="new-game-button">Play Again</button>
+    }
   }
 
   render() {
     return (
       <div>
         <h1>Build A Snowman</h1>
+        {this.gameCompleteHeader()}
+        <div className="reset-container">{this.newGameButton()}</div>
         <div>
-          <img className="snowman-image" src="./snowman_images/step_7.png" alt="Snowman" />
+          <img
+            className="snowman-image"
+            src={`./snowman_images/step_${this.state.snowmanStep}.png`}
+            alt={`Snowman step ${this.state.snowmanStep}`}
+          />
 
           <p className="word">
             {this.state.correctLetters.map(letter => {
