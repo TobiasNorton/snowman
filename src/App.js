@@ -16,7 +16,8 @@ class App extends Component {
         ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
         ['z', 'x', 'c', 'v', 'b', 'n', 'm']
       ],
-      snowmanStep: 0
+      snowmanStep: 0,
+      newGame: true
     }
   }
 
@@ -44,8 +45,18 @@ class App extends Component {
     })
     console.log(this.state.correctLetters)
     this.setState({
-      correctLetters: this.state.correctLetters
+      correctLetters: this.state.correctLetters,
+      newGame: false
     })
+    this.gamePrompt()
+  }
+
+  gamePrompt = () => {
+    if (this.state.newGame === true) {
+      return <h3>Select a Letter to Begin</h3>
+    } else {
+      return
+    }
   }
 
   setSnowmanImage = () => {
@@ -65,11 +76,7 @@ class App extends Component {
     let completedWord = this.state.correctLetters
     if (this.state.generatedWord === completedWord.join('')) {
       return (
-        <button
-          disabled={this.state.chosenLetters.includes('a')}
-          onClick={this.resetGame}
-          className="new-game-button"
-        >
+        <button onClick={this.resetGame} className="new-game-button">
           Play Again
         </button>
       )
@@ -81,7 +88,8 @@ class App extends Component {
     this.setState({
       correctLetters: ['_ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _'],
       snowmanStep: 0,
-      chosenLetters: []
+      chosenLetters: [],
+      newGame: true
     })
   }
 
@@ -89,7 +97,8 @@ class App extends Component {
     return (
       <div>
         <h1>Build A Snowman</h1>
-        <h3>Select a Letter to Begin</h3>
+        {/* <h3>Select a Letter to Begin</h3> */}
+        {this.gamePrompt()}
         {this.gameCompleteHeader()}
         <div className="reset-container">{this.newGameButton()}</div>
         <div>

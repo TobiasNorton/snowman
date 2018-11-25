@@ -26,7 +26,7 @@ h1 {
   font-weight: normal;
   font-size: 6rem;
   text-align: center;
-  margin: 2.2rem 0 0 0;
+  margin: 1rem 0 0 0;
 }
 
 h3 {
@@ -36,18 +36,22 @@ h3 {
   text-align: center;
   margin: 0;
 }
+
 .reset-container {
   display: flex;
   justify-content: center;
 }
+
 button:disabled {
   opacity: 0;
+  transition: 2s;
 }
+
 .game-complete-header {
   font-family: 'Meatloaf Solid', sans-serif;
   font-size: 3.5rem;
   text-align: center;
-  margin: 1.5rem auto;
+  margin: 0 auto 1.5rem auto;
 }
 
 .new-game-button {
@@ -63,7 +67,7 @@ button:disabled {
 }
 
 .snowman-image {
-  margin: 0 auto 2rem auto;
+  margin: 0 auto;
   display: block;
   width: 28rem;
 }
@@ -72,6 +76,7 @@ button:disabled {
   font-family: 'Meatloaf Solid', sans-serif;
   font-size: 3.5rem;
   text-align: center;
+  margin: 0;
 }
 
 .keyboard {
@@ -90,6 +95,8 @@ button:disabled {
   height: 2.8rem;
   border-radius: 5px;
   margin: 0.4rem;
+  transition: 0.3s;
+  transition-timing-function: ease-in;
 }
 
 .keyboard button:hover {
