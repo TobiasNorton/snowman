@@ -7,9 +7,9 @@ class App extends Component {
     super(props)
 
     this.state = {
-      correctLetters: ['_', '_', '_', '_', '_', '_', '_'],
+      correctLetters: ['_ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _'],
       generatedWord: '',
-      word: '_ _ _ _ _ _ _',
+      word: ['', '', '', '', '', '', ''],
       keyboard: [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
         ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
@@ -40,6 +40,9 @@ class App extends Component {
       }
     })
     console.log(this.state.correctLetters)
+    this.setState({
+      correctedLetters: this.state.correctedLetters
+    })
   }
 
   render() {
@@ -49,7 +52,11 @@ class App extends Component {
         <div>
           <img className="snowman-image" src="./snowman_images/step_7.png" alt="Snowman" />
 
-          <p className="word">{this.state.correctLetters}</p>
+          <p className="word">
+            {this.state.correctLetters.map(letter => {
+              return <span>{letter.toUpperCase()}</span>
+            })}
+          </p>
           <section className="keyboard">
             <div className="first-row">
               <button value="q" onClick={this.letterClick}>
