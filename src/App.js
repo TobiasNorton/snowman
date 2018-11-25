@@ -8,6 +8,7 @@ class App extends Component {
 
     this.state = {
       correctLetters: ['_ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _'],
+      chosenLetters: [],
       generatedWord: '',
       word: ['', '', '', '', '', '', ''],
       keyboard: [
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   letterClick = event => {
-    event.target.classList.add('hidden')
+    this.state.chosenLetters.push(event.target.value)
     let wordAsAnArray = this.state.generatedWord.split('')
     wordAsAnArray.map(letter => {
       if (event.target.value === letter) {
@@ -63,14 +64,32 @@ class App extends Component {
   newGameButton = () => {
     let completedWord = this.state.correctLetters
     if (this.state.generatedWord === completedWord.join('')) {
-      return <button className="new-game-button">Play Again</button>
+      return (
+        <button
+          disabled={this.state.chosenLetters.includes('a')}
+          onClick={this.resetGame}
+          className="new-game-button"
+        >
+          Play Again
+        </button>
+      )
     }
+  }
+
+  resetGame = () => {
+    this.generateRandomWord()
+    this.setState({
+      correctLetters: ['_ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _ ', ' _'],
+      snowmanStep: 0,
+      chosenLetters: []
+    })
   }
 
   render() {
     return (
       <div>
         <h1>Build A Snowman</h1>
+        <h3>Select a Letter to Begin</h3>
         {this.gameCompleteHeader()}
         <div className="reset-container">{this.newGameButton()}</div>
         <div>
@@ -87,87 +106,191 @@ class App extends Component {
           </p>
           <section className="keyboard">
             <div className="first-row">
-              <button value="q" onClick={this.letterClick}>
-                q
+              <button
+                disabled={this.state.chosenLetters.includes('q')}
+                value="q"
+                onClick={this.letterClick}
+              >
+                Q
               </button>
-              <button value="w" onClick={this.letterClick}>
-                w
+              <button
+                disabled={this.state.chosenLetters.includes('w')}
+                value="w"
+                onClick={this.letterClick}
+              >
+                W
               </button>
-              <button value="e" onClick={this.letterClick}>
-                e
+              <button
+                disabled={this.state.chosenLetters.includes('e')}
+                value="e"
+                onClick={this.letterClick}
+              >
+                E
               </button>
-              <button value="r" onClick={this.letterClick}>
-                r
+              <button
+                disabled={this.state.chosenLetters.includes('r')}
+                value="r"
+                onClick={this.letterClick}
+              >
+                R
               </button>
-              <button value="t" onClick={this.letterClick}>
-                t
+              <button
+                disabled={this.state.chosenLetters.includes('t')}
+                value="t"
+                onClick={this.letterClick}
+              >
+                T
               </button>
-              <button value="y" onClick={this.letterClick}>
-                y
+              <button
+                disabled={this.state.chosenLetters.includes('y')}
+                value="y"
+                onClick={this.letterClick}
+              >
+                Y
               </button>
-              <button value="u" onClick={this.letterClick}>
-                u
+              <button
+                disabled={this.state.chosenLetters.includes('u')}
+                value="u"
+                onClick={this.letterClick}
+              >
+                U
               </button>
-              <button value="i" onClick={this.letterClick}>
-                i
+              <button
+                disabled={this.state.chosenLetters.includes('i')}
+                value="i"
+                onClick={this.letterClick}
+              >
+                I
               </button>
-              <button value="o" onClick={this.letterClick}>
-                o
+              <button
+                disabled={this.state.chosenLetters.includes('o')}
+                value="o"
+                onClick={this.letterClick}
+              >
+                O
               </button>
-              <button value="p" onClick={this.letterClick}>
-                p
+              <button
+                disabled={this.state.chosenLetters.includes('p')}
+                value="p"
+                onClick={this.letterClick}
+              >
+                P
               </button>
             </div>
             <div className="second-row">
-              <button value="a" onClick={this.letterClick}>
-                a
+              <button
+                disabled={this.state.chosenLetters.includes('a')}
+                value="a"
+                onClick={this.letterClick}
+              >
+                A
               </button>
-              <button value="s" onClick={this.letterClick}>
-                s
+              <button
+                disabled={this.state.chosenLetters.includes('s')}
+                value="s"
+                onClick={this.letterClick}
+              >
+                S
               </button>
-              <button value="d" onClick={this.letterClick}>
-                d
+              <button
+                disabled={this.state.chosenLetters.includes('d')}
+                value="d"
+                onClick={this.letterClick}
+              >
+                D
               </button>
-              <button value="f" onClick={this.letterClick}>
-                f
+              <button
+                disabled={this.state.chosenLetters.includes('f')}
+                value="f"
+                onClick={this.letterClick}
+              >
+                F
               </button>
-              <button value="g" onClick={this.letterClick}>
-                g
+              <button
+                disabled={this.state.chosenLetters.includes('g')}
+                value="g"
+                onClick={this.letterClick}
+              >
+                G
               </button>
-              <button value="h" onClick={this.letterClick}>
-                h
+              <button
+                disabled={this.state.chosenLetters.includes('h')}
+                value="h"
+                onClick={this.letterClick}
+              >
+                H
               </button>
-              <button value="j" onClick={this.letterClick}>
-                j
+              <button
+                disabled={this.state.chosenLetters.includes('j')}
+                value="j"
+                onClick={this.letterClick}
+              >
+                J
               </button>
-              <button value="k" onClick={this.letterClick}>
-                k
+              <button
+                disabled={this.state.chosenLetters.includes('k')}
+                value="k"
+                onClick={this.letterClick}
+              >
+                K
               </button>
-              <button value="l" onClick={this.letterClick}>
-                l
+              <button
+                disabled={this.state.chosenLetters.includes('l')}
+                value="l"
+                onClick={this.letterClick}
+              >
+                L
               </button>
             </div>
             <div className="third-row">
-              <button value="z" onClick={this.letterClick}>
-                z
+              <button
+                disabled={this.state.chosenLetters.includes('z')}
+                value="z"
+                onClick={this.letterClick}
+              >
+                Z
               </button>
-              <button value="x" onClick={this.letterClick}>
-                x
+              <button
+                disabled={this.state.chosenLetters.includes('x')}
+                value="x"
+                onClick={this.letterClick}
+              >
+                X
               </button>
-              <button value="c" onClick={this.letterClick}>
-                c
+              <button
+                disabled={this.state.chosenLetters.includes('c')}
+                value="c"
+                onClick={this.letterClick}
+              >
+                C
               </button>
-              <button value="v" onClick={this.letterClick}>
-                v
+              <button
+                disabled={this.state.chosenLetters.includes('v')}
+                value="v"
+                onClick={this.letterClick}
+              >
+                V
               </button>
-              <button value="b" onClick={this.letterClick}>
-                b
+              <button
+                disabled={this.state.chosenLetters.includes('b')}
+                value="b"
+                onClick={this.letterClick}
+              >
+                B
               </button>
-              <button value="n" onClick={this.letterClick}>
-                n
+              <button
+                disabled={this.state.chosenLetters.includes('n')}
+                value="n"
+                onClick={this.letterClick}
+              >
+                N
               </button>
-              <button value="m" onClick={this.letterClick}>
-                m
+              <button
+                disabled={this.state.chosenLetters.includes('m')}
+                value="m"
+                onClick={this.letterClick}
+              >
+                M
               </button>
             </div>
           </section>

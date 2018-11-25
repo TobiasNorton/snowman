@@ -11,27 +11,55 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+@font-face {
+  font-family: 'Meatloaf';
+  src: url('./Meatloaf.ttf');
+}
+
+@font-face {
+  font-family: 'Meatloaf Solid';
+  src: url('./MeatloafSolid.ttf');
+}
+
 h1 {
-  font-size: 3.5rem;
+  font-family: 'Meatloaf', sans-serif;
+  font-weight: normal;
+  font-size: 6rem;
   text-align: center;
   margin: 2.2rem 0 0 0;
 }
 
+h3 {
+  font-family: 'Meatloaf Solid', sans-serif;
+  font-weight: normal;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+}
 .reset-container {
   display: flex;
   justify-content: center;
 }
-
+button:disabled {
+  opacity: 0;
+}
 .game-complete-header {
-  font-size: 2.5rem;
+  font-family: 'Meatloaf Solid', sans-serif;
+  font-size: 3.5rem;
   text-align: center;
   margin: 1.5rem auto;
 }
 
 .new-game-button {
-  font-size: 1.5rem;
+  font-family: 'Meatloaf Solid', sans-serif;
+  font-size: 2rem;
   width: 10rem;
   height: 3rem;
+  border-radius: 5px;
+}
+
+.new-game-button:hover {
+  cursor: pointer;
 }
 
 .snowman-image {
@@ -41,12 +69,13 @@ h1 {
 }
 
 .word {
-  font-size: 2.5rem;
+  font-family: 'Meatloaf Solid', sans-serif;
+  font-size: 3.5rem;
   text-align: center;
 }
 
 .keyboard {
-  width: 30rem;
+  width: 40rem;
   margin: 1rem auto 4rem auto;
   display: flex;
   flex-direction: column;
@@ -54,11 +83,17 @@ h1 {
 }
 
 .keyboard button {
-  font-size: 1.2rem;
-  width: 2.5rem;
-  height: 2rem;
+  font-family: 'Meatloaf Solid', sans-serif;
+  font-size: 2.5rem;
+  font-weight: normal;
+  width: 3rem;
+  height: 2.8rem;
   border-radius: 5px;
-  margin: 0.2rem;
+  margin: 0.4rem;
+}
+
+.keyboard button:hover {
+  cursor: pointer;
 }
 
 .hidden {
