@@ -97,6 +97,7 @@ button:disabled {
   margin: 0.4rem;
   transition: 0.3s;
   transition-timing-function: ease-in;
+  text-transform: uppercase;
 }
 
 .keyboard button:hover {
