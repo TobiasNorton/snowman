@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import words from './words.json'
-import Button from './Button.js'
+// import Button from './Button.js'
 
 class App extends Component {
   constructor(props) {
@@ -89,7 +89,11 @@ class App extends Component {
   gameCompleteHeader = () => {
     let completedWord = this.state.chosenLetters
     if (this.state.generatedWord === completedWord.join('')) {
-      return <p className="game-complete-header">Hey, you did it!</p>
+      return (
+        <p key="game-complete" className="game-complete-header">
+          Hey, you did it!
+        </p>
+      )
     }
   }
 
@@ -97,7 +101,7 @@ class App extends Component {
     let completedWord = this.state.chosenLetters
     if (this.state.generatedWord === completedWord.join('')) {
       return (
-        <button onClick={this.resetGame} className="new-game-button">
+        <button key="play-again" onClick={this.resetGame} className="new-game-button">
           Play Again
         </button>
       )
@@ -130,7 +134,7 @@ class App extends Component {
           <p className="word">
             {this.state.generatedWord.split('').map(letter => {
               let letterToShow = this.state.chosenLetters.includes(letter) ? letter : '_'
-              return <span>{letterToShow.toUpperCase()}</span>
+              return <span key="letter-to-show">{letterToShow.toUpperCase()}</span>
             })}
           </p>
 

@@ -60,6 +60,8 @@ button:disabled {
   width: 10rem;
   height: 3rem;
   border-radius: 5px;
+  border: 2px solid hsl(185, 0%, 80%, 1);
+  background-color: hsl(185, 0%, 95%);
 }
 
 .new-game-button:hover {
